@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import VechInfoComponent from './propcomponent/VechInfoComponent';
+import FieldArrayComponent from './components/FieldArrayComponent'
+import StepperComponent from './components/StepperComponent'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Step 1 : </h1>
+      <FieldArrayComponent />
+      <h1>Step 2 : </h1>
+      <StepperComponent />
+      {/* <h3>Stepper 1 : vechicle info</h3>
+      <VechInfoComponent /> */}
     </div>
   );
 }
