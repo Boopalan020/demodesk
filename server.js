@@ -6,7 +6,7 @@ const fs = require('fs')
 const port = process.env.port || 3001
 const path = require('path')
 
-app.use(express.static(path.join(__dirname, './build')))
+// app.use(express.static(path.join(__dirname, './build')))
 app.use(morgan("default"))
 app.use(cors({
     origin : 'http://localhost:3000'
@@ -27,9 +27,9 @@ app.get('/pdffile', (req, res) => {
     src.pipe(res);
 })
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, './build', 'index.html'))
- })
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, './build', 'index.html'))
+//  })
 
 app.listen(port, () => {
     console.log("Server is start at the PORT.NO __" + port)

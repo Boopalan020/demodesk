@@ -25,12 +25,12 @@ function MemoTableComponent() {
         diesel : 
         [
             {
-                filled_date : '',
-                litre : '0',
-                rate : '0',
-                rate_on_day : '0',
-                place : ''
-            }
+                filled_date : '2020-10-9',
+                litre : '621',
+                rate : '6323',
+                rate_on_day : '63.4',
+                place : 'sankagiri'
+            },
         ],
         total_diesel_litre : '621',new_tyre : '0',old_tyre : '0',
         expense_details : 
@@ -91,7 +91,6 @@ function MemoTableComponent() {
             const pages = pdfDoc.getPages()
             const firstPage = pages[0]
             const secondPage = pages[1]
-            const { width, height } = firstPage.getSize()
             
             // For Top 3 rows============
             firstPage.drawText(memoData.vehicle_no, {   // Vehicle Number
@@ -221,17 +220,17 @@ function MemoTableComponent() {
             firstPage.drawText(memoData.total_commission, {  // Tota commission
                 x : 420,
                 y : yval,
-                size : 12
+                size : 10
             })
             firstPage.drawText(memoData.total_loading, {    //total Loading
                 x : 500,
                 y : yval,
-                size : 12
+                size : 10
             })
             firstPage.drawText(memoData.total_unloading, {  //total unloading
                 x : 580,
                 y : yval,
-                size : 12
+                size : 10
             })
             // ending trip information
 
@@ -243,12 +242,12 @@ function MemoTableComponent() {
                 firstPage.drawText(memoData.expense_details[i].reason, {
                     x :640,
                     y :yval,
-                    size :12
+                    size :10
                 })
                 firstPage.drawText(memoData.expense_details[i].amount, {
                     x :740,
                     y :yval,
-                    size :12
+                    size :10
                 })
                 if(i <= 14)
                     yval -= 16
@@ -268,8 +267,141 @@ function MemoTableComponent() {
             //End of Other expense data
 
             // printing diesel data
-            
+            yval = 307
+            for( i = 0 ; i < memoData.diesel.length ; i++)
+            {
+                printable = ''
+                if( i === 0)
+                {
+                    d = new Date(memoData.diesel[i].filled_date)
+                    printable += d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()
+                }
+                firstPage.drawText(printable, {
+                    x : 34,
+                    y : yval,
+                    size : 10
+                })
+                firstPage.drawText(memoData.diesel[0].litre, {
+                    x : 95,
+                    y : yval,
+                    size : 10
+                })
+                firstPage.drawText(memoData.diesel[0].rate, {
+                    x : 156,
+                    y : yval,
+                    size : 10
+                })
+                firstPage.drawText(memoData.diesel[0].rate_on_day+"/lit", {
+                    x : 245,
+                    y : yval,
+                    size : 10
+                })
+                firstPage.drawText(memoData.diesel[0].place,{
+                    x : 368,
+                    y : yval,
+                    size : 10
+                })   
+                if(i <= 14)
+                    yval -= 16
+                else
+                    yval -= 17
+            }
+            firstPage.drawText("Total", {
+                x :34,
+                y :yval,
+                size :12
+            })
+            firstPage.drawText(memoData.total_diesel_litre, {
+                x :95,
+                y :yval,
+                size :12
+            })
+            firstPage.drawText(memoData.total_diesel_amount, {
+                x :156,
+                y :yval,
+                size :12
+            })
             // end of printing diesel data
+
+            // Overall expense printing
+            firstPage.drawText(memoData.total_diesel_amount, {
+                x : 560,
+                y : 307,
+                size : 10
+            })
+            firstPage.drawText(memoData.total_commission, {
+                x : 560,
+                y : 290,
+                size : 10
+            })
+
+            firstPage.drawText(memoData.total_loading, {
+                x : 560,
+                y : 275,
+                size : 10
+            })
+
+            firstPage.drawText(memoData.total_unloading, {
+                x : 560,
+                y : 259,
+                size : 10
+            })
+            firstPage.drawText(memoData.total_expense, {
+                x : 560,
+                y : 242,
+                size : 10
+            })
+            firstPage.drawText(memoData.driver_salary, {
+                x : 560,
+                y : 225,
+                size : 10
+            })
+            firstPage.drawText(memoData.cleaner_salary, {
+                x : 560,
+                y : 209,
+                size : 10
+            })
+            firstPage.drawText(memoData.workshop, {
+                x : 560,
+                y : 193,
+                size : 10
+            })
+            firstPage.drawText(memoData.total_rto, {
+                x : 560,
+                y : 177,
+                size : 10
+            })
+            firstPage.drawText(memoData.toll_gate, {
+                x : 560,
+                y : 161,
+                size : 10
+            })
+            firstPage.drawText(memoData.bill_padi, {
+                x : 560,
+                y : 129,
+                size : 10
+            })
+            firstPage.drawText(memoData.pathayam, {
+                x : 560,
+                y : 113,
+                size : 10
+            })
+            firstPage.drawText(memoData.trip_expense, {
+                x : 560,
+                y : 97,
+                size : 10
+            })
+            firstPage.drawText(memoData.total_rent, {
+                x : 560,
+                y : 81,
+                size : 10
+            })
+            firstPage.drawText(memoData.final_balance.hands_on, {
+                x : 560,
+                y : 65,
+                size : 10
+            })
+            //end of Overall expense printing
 
             // printing RTO details
             yval = 500
