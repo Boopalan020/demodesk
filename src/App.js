@@ -1,17 +1,22 @@
 import React from 'react';
 // import VechInfoComponent from './propcomponent/VechInfoComponent';
 import FieldArrayComponent from './components/FieldArrayComponent'
+import MemoTableComponent from './components/MemoTableComponent';
 import StepperComponent from './components/StepperComponent'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <h1>Step 1 : </h1>
-      <FieldArrayComponent />
-      <h1>Step 2 : </h1>
-      <StepperComponent />
-      {/* <h3>Stepper 1 : vechicle info</h3>
-      <VechInfoComponent /> */}
+      <Router>
+        <Switch>
+          <Route path='/field' component = { FieldArrayComponent } />
+          <Route path='/stepper' component = { StepperComponent } />
+          <Route path='/memotable' component = { MemoTableComponent } />
+        </Switch>
+      </Router>
+      {/* <h1>Step : 3</h1>
+      <MemoTableComponent /> */}
     </div>
   );
 }

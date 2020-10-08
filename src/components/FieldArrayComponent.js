@@ -1,5 +1,6 @@
 import { Field, FieldArray, Form, Formik } from 'formik'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function FieldArrayComponent() {
 
@@ -96,6 +97,9 @@ function FieldArrayComponent() {
                 </Form>
             )}
             </Formik>
+            <Link to='/memotable'>
+                    Go to memotable
+            </Link>
         </div>
     )
 }
